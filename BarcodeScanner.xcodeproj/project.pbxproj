@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B409D312B209F9E002AECC5 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B409D302B209F9E002AECC5 /* ScannerViewController.swift */; };
 		9B79E8342B1EAC8F000B6B82 /* BarcodeScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79E8332B1EAC8F000B6B82 /* BarcodeScannerApp.swift */; };
 		9B79E8362B1EAC8F000B6B82 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79E8352B1EAC8F000B6B82 /* BarcodeScannerView.swift */; };
 		9B79E8382B1EAC92000B6B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B79E8372B1EAC92000B6B82 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B409D302B209F9E002AECC5 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		9B79E8302B1EAC8F000B6B82 /* BarcodeScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarcodeScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B79E8332B1EAC8F000B6B82 /* BarcodeScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerApp.swift; sourceTree = "<group>"; };
 		9B79E8352B1EAC8F000B6B82 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				9B79E8352B1EAC8F000B6B82 /* BarcodeScannerView.swift */,
 				9B79E8372B1EAC92000B6B82 /* Assets.xcassets */,
 				9B79E8392B1EAC92000B6B82 /* Preview Content */,
+				9B409D302B209F9E002AECC5 /* ScannerViewController.swift */,
 			);
 			path = BarcodeScanner;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B79E8362B1EAC8F000B6B82 /* BarcodeScannerView.swift in Sources */,
+				9B409D312B209F9E002AECC5 /* ScannerViewController.swift in Sources */,
 				9B79E8342B1EAC8F000B6B82 /* BarcodeScannerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
