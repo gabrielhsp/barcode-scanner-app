@@ -9,8 +9,14 @@ import Foundation
 import AVFoundation
 import UIKit
 
+enum CameraError: String {
+    case invalidDeviceInput = "Something is wrong with camera. We are unable to capture the input."
+    case invalidScannedValue = "The vlaue scanned is not valid. This app scans EAN-8 and EAN-13."
+}
+
 protocol ScannerViewControllerDelegate: AnyObject {
     func scannerViewController(didFindBarcode barcode: String)
+    func scannerViewController(didSurfaceError error: CameraError)
 }
 
 final class ScannerViewController: UIViewController {
@@ -32,7 +38,7 @@ final class ScannerViewController: UIViewController {
     // MARK: - Private Methods
     private func setupCaptureSession() {
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidDeviceInput)
             return
         }
         
@@ -41,14 +47,14 @@ final class ScannerViewController: UIViewController {
         do {
             try videoInput = AVCaptureDeviceInput(device: videoCaptureDevice)
         } catch {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidDeviceInput)
             return
         }
         
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidDeviceInput)
             return
         }
         
@@ -60,7 +66,7 @@ final class ScannerViewController: UIViewController {
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metaDataOutput.metadataObjectTypes = [.ean8, .ean13]
         } else {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidDeviceInput)
             return
         }
         
@@ -79,17 +85,17 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                         didOutput metadataObjects: [AVMetadataObject],
                         from connection: AVCaptureConnection) {
         guard let object = metadataObjects.first else {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidScannedValue)
             return
         }
         
         guard let machineReadableObject = object as? AVMetadataMachineReadableCodeObject else {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidScannedValue)
             return
         }
         
         guard let barcode = machineReadableObject.stringValue else {
-            // TODO: - Add an error treatment here
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidScannedValue)
             return
         }
         
