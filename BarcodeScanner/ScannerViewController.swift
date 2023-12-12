@@ -5,7 +5,6 @@
 //  Created by Gabriel Pereira on 06/12/23.
 //
 
-import Foundation
 import AVFoundation
 import UIKit
 
@@ -33,6 +32,23 @@ final class ScannerViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - LifeCycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupCaptureSession()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    
+        guard let previewLayer = previewLayer else {
+            scannerDelegate?.scannerViewController(didSurfaceError: .invalidDeviceInput)
+            return
+        }
+        
+        previewLayer.frame = view.layer.bounds
     }
     
     // MARK: - Private Methods
