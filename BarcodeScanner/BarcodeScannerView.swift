@@ -22,10 +22,10 @@ struct BarcodeScannerView: View {
                 Label("Scanned Barcode: ", systemImage: "barcode.viewfinder")
                     .font(.title)
                 
-                Text(viewModel.scannedCode.isEmpty ? "Not Yet Scanned" : viewModel.scannedCode)
+                Text(viewModel.statusText)
                     .bold()
                     .font(.largeTitle)
-                    .foregroundColor(viewModel.scannedCode.isEmpty ? .red : .green)
+                    .foregroundColor(viewModel.statusTextColor)
                     .padding()
             }
             .navigationTitle("Barcode Scanner")
