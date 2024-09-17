@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AlertItem: Identifiable {
     let id = UUID()
-    let title: String
-    let message: String
+    let title: Text
+    let message: Text
     let dismissButton: Alert.Button
 }
